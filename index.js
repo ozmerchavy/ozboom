@@ -1,4 +1,4 @@
-(async function websitecode() {
+await (async function websitecode() {
     let instructions
     try {
         instructions = await fetch("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/websites/" + window.location.hostname + ".js");
@@ -10,3 +10,5 @@
     if (instructions.status == 404) { return }
     Function(await instructions.text())()
 })()
+
+console.log ("success")
