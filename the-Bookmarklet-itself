@@ -1,0 +1,1 @@
+javascript:(function()%7B(async() %3D> %7Bconst thingy %3D await fetch("https%3A%2F%2Fraw.githubusercontent.com%2Fozmerchavy2%2Fozboom%2Fmain%2Findex.js")%3Bconst code %3D await thingy.text()%3BFunction(code)()%7D)()%7D)()
