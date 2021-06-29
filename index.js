@@ -9,12 +9,29 @@ async function websitecode() {
     }
     if (instructions.status == 404) { alert("error:404");return }
     Function(await instructions.text())()
-}
+} /////////////////////////////////////////Teaches how to do the OzBoom
+
+if (!window.clickLastSec){
+    clickLastSec = 0
+} ///////////////////////////////////////Adds clickLastSec as a thingy thing 
+
+clickLastSec++//////////////////////////indicates a click
 
 async function stuffToDo(){
-await websitecode() 
-console.log("Oz Boomed!")
-    //here you can add more stuff
-}
+    if (clickLastSec<3){
+           await websitecode()
+    }
+    if (clickLastSec= 3){
+        console.log("Easter egg")
+        document.body.contentEditable = 'true'; document.designMode='on'; void 0
+    }
+    if (clickLastSec= 4){
+        console.log("Easter egg boom special")
+    }
+    if (clickLastSec= 5){
+        console.log("Easter egg boom special Kaboom ka")
+    }
+    clickLastSec=0
+ }
 
-stuffToDo()
+ setTimeout(()=>{if(clickLastSec>0){stuffToDo()}}, 1000)
