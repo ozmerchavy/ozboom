@@ -1,20 +1,34 @@
-await (async function websitecode() {
 async function websitecode() {
     let instructions
     try {
         instructions = await fetch("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/websites/" + window.location.hostname + ".js");
-@@ -9,6 +9,12 @@ await (async function websitecode() {
     }
-    if (instructions.status == 404) { alert("error:404");return }
+    catch (err) {
+        alert('err! info' + JSON.stringify(err))
+        return
+    }
+    if (instructions.status == 404) { alert("error:404"); return }
     Function(await instructions.text())()
-})()
+} /////////////////////////////////////////Teaches how to do the OzBoom
+
+if (!window.clickLastSec) {
+    clickLastSec = 0
+} ///////////////////////////////////////Adds clickLastSec as a thingy thing 
+clickLastSec++//////////////////////////indicates a click
+
+async function stuffToDo() {
+    if (clickLastSec < 3) {
+        await websitecode()
+    }
+    if (clickLastSec == 3) {
+        console.log("Easter egg")
+        document.body.contentEditable = 'true'; document.designMode = 'on'; void 0
+    }
+    if (clickLastSec == 4) {
+        console.log("Easter egg boom special")
+    }
+   
+    clickLastSec = 0
 }
 
-console.log ("success")
-async function stuffToDo(){
-await websitecode() 
-console.log("Oz Boomed!")
-    //here you can add more stuff
-}
-
-stuffToDo()
+setTimeout(() => { if (clickLastSec > 0) { stuffToDo() } }, 1000)
