@@ -27,11 +27,14 @@ async function stuffToDo() {
             }
             if (editMode == true) {
                   document.body.contentEditable = 'false'; document.designMode = 'off'; void 0
-                  editMode= false
+                  editMode = false
                   return
             }
-            editMode = true
-            document.body.contentEditable = 'true'; document.designMode = 'on'; void 0
+            else {
+                  editMode = true
+                  document.body.contentEditable = 'true'; document.designMode = 'on'; void 0
+
+            }
       }
       if (clickLastSec == 4) {
             console.log("Easter egg boom special")
