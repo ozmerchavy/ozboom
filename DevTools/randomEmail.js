@@ -1,0 +1,1 @@
+text=Math.random().toString(36).slice(2)+"@gmail.com",input=document.body.appendChild(document.createElement("input")),input.value=text,console.log(input.value),input.focus(),input.select(),document.execCommand("copy"),input.parentNode.removeChild(input);
