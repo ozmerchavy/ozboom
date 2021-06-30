@@ -29,7 +29,7 @@ async function stuffToDo() { //////////////////////////HERE IS WHAT WILL HAPPEN 
          if (!window.editMode) {
             editMode = false
         }  ///////////////////creates the editMode global variable 
-        console.log("Edit Website Mode is " + (editMode? "on": "off"))
+        console.log("Edit Website Mode is " + (editMode? "off": "on"))
         if (editMode == true) {
             document.body.contentEditable = 'false'; document.designMode = 'off'; void 0
             editMode = false
