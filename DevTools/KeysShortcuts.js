@@ -40,6 +40,7 @@ addShortcut("p", "https://raw.githubusercontent.com/Krazete/bookmarklets/master/
 addShortcut("u", "https://raw.githubusercontent.com/Krazete/bookmarklets/master/tri.js", "3d page!!")
 addShortcut("b", "https://unpkg.com/@mourner/bullshit@1.2.0/bullshit.js", "reveals bullshit in page")
 addShortcut("s", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/addSuperFetchFunction.js", "add SuperFetch functions to the console.")
+addShortcut("q", prompt("what is the link for the new code?", "test new codes"))
 
 
 
