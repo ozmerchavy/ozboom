@@ -12,7 +12,7 @@ async function loadScript(scriptLink) {
 }
 function addShortcut(keyString, scriptLink, description) {
     let keyCode = "Key" + keyString.toUpperCase()
-    instructionKeys.push(({ keyString, description }))
+    console.log(({ keyString, description }))
     document.addEventListener("keyup", async (e) => {
         if (e.code != keyCode) { return; }
         if(isShortcutMode == false ){return }
@@ -23,4 +23,3 @@ function addShortcut(keyString, scriptLink, description) {
     })
 }
 addShortcut("e", prompt("what is the link for the new code?"), "test new codes")
-console.log("added a new shortcut on e")
