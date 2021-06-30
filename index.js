@@ -1,45 +1,50 @@
-async function websitecode() {
-      let instructions
-      try {
-            instructions = await fetch("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/websites/" + window.location.hostname + ".js");
-      }
-      catch (err) {
-            alert('err! info' + JSON.stringify(err))
-            return
-      }
-      if (instructions.status == 404) { alert("We Don't Have a function to this page currently; you are more than welcome to ask for one"); return }
-      Function(await instructions.text())()
-} /////////////////////////////////////////Teaches how to do the OzBoom
-
+async function loadScript(scriptLink) {
+    let instructions
+    try {
+        instructions = await fetch(scriptLink);
+    }
+    catch (err) {
+        alert('error! this is the info we have: \n' + JSON.stringify(err))
+        return
+    }
+    if (instructions.status == 404) { console.log("Script link doesnt work. Try manually to check if there's a script for you here: \n" + scriptLink); return }
+    Function(await instructions.text())()
+} /////////////////////////////////////////Teaches how to load a script from a link
 if (!window.clickLastSec) {
-      clickLastSec = 0
-} ///////////////////////////////////////Adds clickLastSec as a thingy thing 
+    clickLastSec = 0
+}  ///////////////////creates the clickLastSec global variable 
 clickLastSec++//////////////////////////indicates a click
 
-async function stuffToDo() {
-      if (clickLastSec < 3) {
-            await websitecode()
-      }
-      if (clickLastSec == 3) {
-            console.log("Easter egg")
-            if (!window.editMode) {
-                  editMode = 0
-            }
-            if (editMode == true) {
-                  document.body.contentEditable = 'false'; document.designMode = 'off'; void 0
-                  editMode = false
-            }
-            else {
-                  editMode = true
-                  document.body.contentEditable = 'true'; document.designMode = 'on'; void 0
+async function stuffToDo() { //////////////////////////HERE IS WHAT WILL HAPPEN BASED ON CLICK AMOUNT
+    if (clickLastSec == 1) {
+        await loadScript("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/websites/" + window.location.hostname + ".js") ////////activates Oz Boom
+        await loadScript("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/KeysShortcuts") /////////adds Shortcuts
 
-            }
-      }
-      if (clickLastSec == 4) {
-            console.log("Easter egg boom special")
-      }
+    }
+    if (clickLastSec == 2) {
+        await loadScript("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/KeysShortcuts")/////////adds Shortcuts
 
-      clickLastSec = 0
+    }
+    if (clickLastSec == 3) {
+        console.log("Edit Website Mode is " + (editMode? "on": "off"))
+        if (!window.editMode) {
+            editMode = false
+        }  ///////////////////creates the editMode global variable 
+        if (editMode == true) {
+            document.body.contentEditable = 'false'; document.designMode = 'off'; void 0
+            editMode = false
+        }
+        else {
+            editMode = true
+            document.body.contentEditable = 'true'; document.designMode = 'on'; void 0
+
+        }
+    }
+    if (clickLastSec == 4) {
+        console.log("Easter egg boom special")
+    }
+
+    clickLastSec = 0
 }
 
 setTimeout(() => { if (clickLastSec > 0) { stuffToDo() } }, 1000)
