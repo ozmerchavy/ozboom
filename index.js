@@ -21,6 +21,7 @@ async function stuffToDo() { //////////////////////////HERE IS WHAT WILL HAPPEN 
 
     }
     if (clickLastSec == 2) {
+        if (window.isShortcutMode) {return}
         await loadScript("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/KeysShortcuts.js")/////////adds Shortcuts
 
     }
