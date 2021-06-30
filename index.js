@@ -22,6 +22,11 @@ async function stuffToDo() {
     }
     if (clickLastSec == 3) {
         console.log("Easter egg")
+        if(editMode==true){
+            document.body.contentEditable = 'false'; document.designMode = 'off'; void 0  
+            return 
+        }
+        editMode =true
         document.body.contentEditable = 'true'; document.designMode = 'on'; void 0
     }
     if (clickLastSec == 4) {
