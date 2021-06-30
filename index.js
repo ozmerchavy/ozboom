@@ -27,6 +27,7 @@ async function stuffToDo() {
             }
             if (editMode == true) {
                   document.body.contentEditable = 'false'; document.designMode = 'off'; void 0
+                  editMode= false
                   return
             }
             editMode = true
