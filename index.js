@@ -18,11 +18,11 @@ clickLastSec++//////////////////////////indicates a click
 async function stuffToDo() { //////////////////////////HERE IS WHAT WILL HAPPEN BASED ON CLICK AMOUNT
     if (clickLastSec == 1) {
         await loadScript("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/websites/" + window.location.hostname + ".js") ////////activates Oz Boom
-        await loadScript("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/KeysShortcuts") /////////adds Shortcuts
+        await loadScript("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/KeysShortcuts.js") /////////adds Shortcuts
 
     }
     if (clickLastSec == 2) {
-        await loadScript("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/KeysShortcuts")/////////adds Shortcuts
+        await loadScript("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/KeysShortcuts.js")/////////adds Shortcuts
 
     }
     if (clickLastSec == 3) {
