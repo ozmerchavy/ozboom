@@ -24,7 +24,7 @@ function addShortcut(keyString, scriptLink, description) {
     instructionKeys.push(({ keyString, description }))
     document.addEventListener("keyup", async (e) => {
         if (e.code != keyCode) { return; }
-        if(shortcutsMode == false ){return }
+        if(isShortcutMode == false ){return }
         console.log(keyString + " is pressed!")
         isShortcutMode = false
         console.log(description)
