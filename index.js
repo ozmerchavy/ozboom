@@ -7,7 +7,7 @@ async function websitecode() {
             alert('err! info' + JSON.stringify(err))
             return
       }
-      if (instructions.status == 404) { alert("error:404"); return }
+      if (instructions.status == 404) { alert("We Don't Have a function to this page currently; you are more than welcome to ask for one"); return }
       Function(await instructions.text())()
 } /////////////////////////////////////////Teaches how to do the OzBoom
 
