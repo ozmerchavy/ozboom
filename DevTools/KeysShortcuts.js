@@ -2,6 +2,11 @@
 let instructionKeys = []
 console.log("Keys shortcuts are added")
 console.log("This are the options: ")
+if (!window.isShortcutMode) {
+    isShortcutMode = true
+}  ///////////////////creates the shortcutmode global variable 
+isShortcutMode = true  ///////////////////allowes shortcuts
+
 async function loadScript(scriptLink) {
     let instructions
     try {
@@ -15,11 +20,13 @@ async function loadScript(scriptLink) {
     Function(await instructions.text())()
 }
 function addShortcut(keyString, scriptLink, description) {
-    let keyCode = "Key"+keyString.toUpperCase()
+    let keyCode = "Key" + keyString.toUpperCase()
     instructionKeys.push(({ keyString, description }))
     document.addEventListener("keyup", async (e) => {
-        if (e.code != keyCode) {return; }
+        if (e.code != keyCode) { return; }
+        if(shortcutsMode == false ){return }
         console.log(keyString + " is pressed!")
+        isShortcutMode = false
         console.log(description)
         await loadScript(scriptLink)
     })
