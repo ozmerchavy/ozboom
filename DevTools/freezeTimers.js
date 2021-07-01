@@ -1,6 +1,8 @@
-for (i = 0; i <= setInterval(()=>{},0); i++) {
+let intervalFinal = setInterval(()=>{},0)
+let timeFinal = setTimeout(()=>{},0)
+for (i = 0; i <= intervalFinal; i++) {
     clearInterval(i);
 }
-for (i = 0; i <= setTimeout(()=>{},0); i++) {
+for (i = 0; i <= timeFinal; i++) {
     clearTimeout(i);
 }
