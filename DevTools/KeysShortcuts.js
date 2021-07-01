@@ -1,3 +1,86 @@
+function onelinify(attributes) {
+        return attributes
+            .replaceAll(/\s+/g, ' ')
+            .replaceAll(/ ?: ?/g, ': ')
+            .replaceAll(/ ?; ?/g, '; ')
+            .trim()
+    }
+
+function draw_oz_boom(menu_obj) {
+
+    const container = document.createElement('div');
+    container.style = onelinify(`
+        --height: 390px;
+        --margin: 15px;
+        position: fixed;
+        bottom: var(--margin);
+        left: var(--margin);
+        right: var(--margin);
+        top: calc(100% - var(--height));
+        background-color: darkgray;
+        opacity: 0.9;
+        border-radius: 15px;
+        display: flex;
+        flex-wrap: wrap;
+    `);
+
+    menu_obj.forEach(({keyString, description}) => {
+
+        const h1 = document.createElement('h1');
+        h1.innerText = keyString;
+        h1.style = onelinify(`
+            font-family: monospace;
+            font-size: 30px;
+            line-height: 0.9;
+        `);
+
+        const p = document.createElement('p');
+        p.innerText = description;
+        p.style = onelinify(`
+            font-size: 17px;
+            text-transform: capitalize;
+        `);
+
+        const item = document.createElement('div');
+        item.style = onelinify(`
+            flex: 1;
+            text-align: center;
+            flex-basis: 200px;
+            padding: 5px;
+        `);
+
+        item.appendChild(h1);
+        item.appendChild(p);
+
+        container.appendChild(item);
+    });
+
+    const wrapper = document.createElement('div');
+    wrapper.style = onelinify(`
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 92147483647;
+    `);
+
+    wrapper.appendChild(container);
+    document.body.appendChild(wrapper);
+
+    const keys = menu_obj.map(obj => obj.keyString);
+
+    function attempt_to_clear(event) {
+        const charCode = event.keyCode || event.which;
+        const charStr = String.fromCharCode(charCode).toLowerCase();
+        if (keys.indexOf(charStr) != -1) {
+            document.body.removeChild(wrapper);
+            document.removeEventListener('keydown', attempt_to_clear);
+        }
+    }
+    document.addEventListener('keydown', attempt_to_clear);
+}
 
 let instructionKeys = []
 console.log("Keys shortcuts are added")
@@ -44,6 +127,7 @@ addShortcut("q", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevT
 
 
 
+draw_oz_boom(instructionKeys);
 console.log(instructionKeys)
 
 
