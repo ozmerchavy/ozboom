@@ -1,86 +1,89 @@
+////////////////Design Functions
+
 function onelinify(attributes) {
-        return attributes
-            .replaceAll(/\s+/g, ' ')
-            .replaceAll(/ ?: ?/g, ': ')
-            .replaceAll(/ ?; ?/g, '; ')
-            .trim()
-    }
+  return attributes
+    .replaceAll(/\s+/g, " ")
+    .replaceAll(/ ?: ?/g, ": ")
+    .replaceAll(/ ?; ?/g, "; ")
+    .trim();
+}
 
 function draw_oz_boom(menu_obj) {
+  const container = document.createElement("div");
+  container.style = onelinify(`
+    --height: 400px;
+    --margin: 15px;
+    z-index: 92147483647;
+    position: fixed;
+    bottom: var(--margin);
+    left: var(--margin);
+    right: var(--margin);
+    top: calc(100% - var(--height));
+    background: rgb(30, 30, 30, 0.95);
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    box-shadow: rgba(10, 10, 10, 0.8) 0px 3px 8px;
+  `);
 
-    const container = document.createElement('div');
-    container.style = onelinify(`
-        --height: 390px;
-        --margin: 15px;
-        position: fixed;
-        bottom: var(--margin);
-        left: var(--margin);
-        right: var(--margin);
-        top: calc(100% - var(--height));
-        background-color: darkgray;
-        opacity: 0.9;
-        border-radius: 15px;
-        display: flex;
-        flex-wrap: wrap;
+  menu_obj.forEach(({ keyString, description }) => {
+
+    const h1 = document.createElement("h1");
+    h1.innerText = keyString;
+    h1.style = onelinify(`
+        font-family: monospace;
+        font-size: 30px;
+        margin-bottom: 13px;
+        color: rgb(48, 26, 52);
+        text-shadow: -2px 0 purple, 0 2px purple, 2px 0 purple, 0 -2px purple;
     `);
 
-    menu_obj.forEach(({keyString, description}) => {
-
-        const h1 = document.createElement('h1');
-        h1.innerText = keyString;
-        h1.style = onelinify(`
-            font-family: monospace;
-            font-size: 30px;
-            line-height: 0.9;
-        `);
-
-        const p = document.createElement('p');
-        p.innerText = description;
-        p.style = onelinify(`
-            font-size: 17px;
-            text-transform: capitalize;
-        `);
-
-        const item = document.createElement('div');
-        item.style = onelinify(`
-            flex: 1;
-            text-align: center;
-            flex-basis: 200px;
-            padding: 5px;
-        `);
-
-        item.appendChild(h1);
-        item.appendChild(p);
-
-        container.appendChild(item);
-    });
-
-    const wrapper = document.createElement('div');
-    wrapper.style = onelinify(`
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 92147483647;
+    const p = document.createElement("p");
+    p.innerText = description;
+    p.style = onelinify(`
+        font-size: 14px;
+        text-transform: capitalize;
+        color: #c0c0c0c0;
+        text-shadow:
+            -1px 0 black,
+            0 1px black,
+            1px 0 black,
+            0 -1px black;
     `);
 
-    wrapper.appendChild(container);
-    document.body.appendChild(wrapper);
+    const item = document.createElement("div");
+    item.style = onelinify(`
+        flex: 1;
+        text-align: center;
+        flex-basis: 200px;
+        padding: 10px;
+    `);
 
-    const keys = menu_obj.map(obj => obj.keyString);
+    item.appendChild(h1);
+    item.appendChild(p);
 
-    function attempt_to_clear(event) {
-        const charCode = event.keyCode || event.which;
-        const charStr = String.fromCharCode(charCode).toLowerCase();
-        if (keys.indexOf(charStr) != -1) {
-            document.body.removeChild(wrapper);
-            document.removeEventListener('keydown', attempt_to_clear);
-        }
+    container.appendChild(item);
+  });
+
+  document.body.appendChild(container);
+
+  const keys = menu_obj.map((obj) => obj.keyString);
+
+  function attempt_to_clear(event) {
+    const charCode = event.keyCode || event.which;
+    const charStr = String.fromCharCode(charCode).toLowerCase();
+    if (keys.indexOf(charStr) != -1) {
+      document.body.removeChild(container);
+      document.removeEventListener("keydown", attempt_to_clear);
     }
-    document.addEventListener('keydown', attempt_to_clear);
+  }
+  document.addEventListener("keydown", attempt_to_clear);
 }
+
+///////////////////////////Here Code Starts
 
 let instructionKeys = []
 console.log("Keys shortcuts are added")
