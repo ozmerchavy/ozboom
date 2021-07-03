@@ -1,3 +1,4 @@
+say = console.log
 superFetch = async function superFetch(url, options = undefined) {
     let superUrl = `https://notes-get-req.herokuapp.com/fetch?url=${url}`;
     if (options) {
