@@ -14,7 +14,7 @@ if (!window.clickLastSec) {
     clickLastSec = 0
 }  ///////////////////creates the clickLastSec global variable 
 clickLastSec++//////////////////////////indicates a click
-loadScript("https://github.com/ozmerchavy2/ozboom/blob/main/DevTools/addUsefulFunctions.js") /////////loads the useful functions
+loadScript("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/addUsefulFunctions.js") /////////loads the useful functions
 
 
 async function stuffToDo() { //////////////////////////HERE IS WHAT WILL HAPPEN BASED ON CLICK AMOUNT
