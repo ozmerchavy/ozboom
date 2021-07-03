@@ -125,8 +125,7 @@ addShortcut("g", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevT
 addShortcut("p", "https://raw.githubusercontent.com/Krazete/bookmarklets/master/piano.js", "cool piano inside the page!")
 addShortcut("u", "https://raw.githubusercontent.com/Krazete/bookmarklets/master/tri.js", "3d page!!")
 addShortcut("b", "https://unpkg.com/@mourner/bullshit@1.2.0/bullshit.js", "reveals bullshit in page")
-addShortcut("s", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/addSuperFetchFunction.js", "add SuperFetch functions to the console.")
-addShortcut("q", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/testShortcut.js", "test new codes")
+addShortcut("q", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/testShortcut.js", "tests new codes")
 
 
 
