@@ -14,8 +14,6 @@ if (!window.clickLastSec) {
     clickLastSec = 0
 }  ///////////////////creates the clickLastSec global variable 
 clickLastSec++//////////////////////////indicates a click
-loadScript("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/addUsefulFunctions.js") /////////loads the useful functions
-
 
 async function stuffToDo() { //////////////////////////HERE IS WHAT WILL HAPPEN BASED ON CLICK AMOUNT
     if (clickLastSec == 1) {
@@ -43,7 +41,9 @@ async function stuffToDo() { //////////////////////////HERE IS WHAT WILL HAPPEN 
         }
     }
     if (clickLastSec == 4) {
-        console.log("Easter egg boom special")
+        console.log("Loading Cool Functions")
+        loadScript("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/addUsefulFunctions.js") /////////loads the useful functions
+
     }
 
     clickLastSec = 0
