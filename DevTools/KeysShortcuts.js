@@ -125,6 +125,7 @@ addShortcut("u", "https://raw.githubusercontent.com/Krazete/bookmarklets/master/
 addShortcut("b", "https://unpkg.com/@mourner/bullshit@1.2.0/bullshit.js", "reveals bullshit in page")
 addShortcut("a", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/addUsefulFunctions.js", "add useful functions to chrome")
 addShortcut("q", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/testShortcut.js", "tests new codes")
+addShortcut("l","https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/poop.js", "make everything poop")
 
 console.log("Keys shortcuts were added")
 draw_oz_boom(instructionKeys);
