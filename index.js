@@ -49,4 +49,4 @@ async function stuffToDo() { //////////////////////////HERE IS WHAT WILL HAPPEN 
     clickLastSec = 0
 }
 
-setTimeout(() => { if (clickLastSec > 0) { stuffToDo() } }, 1000)
+setTimeout(() => { if (clickLastSec > 0) { stuffToDo() } }, 500)
