@@ -43,6 +43,6 @@ function downloadText(filename, string) {
     document.body.removeChild(a);
 }
 
-console.log("added async functions: trySuperFetch, superFetch, checkLink (that returns a document - rn doesnt work), and RandomArticleName() too")
+console.log("added async functions: trySuperFetch, superFetch, checkLink (that returns a document - rn doesnt work), and RandomArticleName() and downloadTEXT downloadJSON too")
 
 
