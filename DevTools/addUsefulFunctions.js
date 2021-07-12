@@ -15,12 +15,4 @@ randomArticleName = async function randomArticleName(){
 let wiki = await superFetch("https://en.wikipedia.org/wiki/Special:Random")
 return wiki.text.split("title>")[1].split(" - Wikipedia</")[0]}
 
-function importJquery(){
-if (window.$ == undefined){
-let script = document.createElement("script")
-script.src = "https://code.jquery.com/jquery-3.6.0.min.js"
-document.head.appendChild(script)
-console.log("imported jQuery!")}
-}
-
 console.log("added async functions: trySuperFetch, superFetch, checkLink (that returns a document - rn doesnt work), and RandomArticleName() too")
