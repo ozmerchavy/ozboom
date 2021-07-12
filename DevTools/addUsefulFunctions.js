@@ -15,4 +15,34 @@ randomArticleName = async function randomArticleName(){
 let wiki = await superFetch("https://en.wikipedia.org/wiki/Special:Random")
 return wiki.text.split("title>")[1].split(" - Wikipedia</")[0]}
 
+function downloadJSON(filename, string) {
+    // thanks Matěj Pokorný from stack overflow
+    
+    const a = document.createElement('a');
+    const href = 'data:application/json;charset=utf-8,' + encodeURIComponent(string);
+    a.setAttribute('href', href);
+    a.setAttribute('download', filename);
+    a.style.display = 'none';
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+function downloadText(filename, string) {
+    // thanks Matěj Pokorný from stack overflow
+
+    const a = document.createElement('a');
+    const href = 'text/plain;charset=utf-8,' + encodeURIComponent(string);
+    a.setAttribute('href', href);
+    a.setAttribute('download', filename);
+    a.style.display = 'none';
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
 console.log("added async functions: trySuperFetch, superFetch, checkLink (that returns a document - rn doesnt work), and RandomArticleName() too")
+
+
