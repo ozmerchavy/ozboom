@@ -70,7 +70,16 @@ async function amazingFetch(url, options = undefined) {
     };
 }
 
+async function isShow(keyword) {
+    let yap = encodeURI(keyword)
+    console.log(yap)
+    let a = await amazingFetch(`https://www.sdarot.tv/search?term=${yap}`)
+    let text = await a.text()
+    return !text.includes('לא נמצאו')
+}
 
-console.log("added async functions: trySuperFetch, superFetch, checkLink (that returns a document - rn doesnt work), and RandomArticleName() and downloadTEXT downloadJSON too and also amazingFetch that does return an object too with the function text()")
+
+console.log("added async functions: trySuperFetch, superFetch, checkLink (that returns a document - rn doesnt work), and RandomArticleName() and downloadTEXT downloadJSON too and also amazingFetch() that does return an object too with the function text()")
+say("also, isShow() checks if available at sdarot.tv")
 
 
