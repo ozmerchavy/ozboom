@@ -44,7 +44,7 @@ function downloadText(filename, string) {
     document.body.removeChild(a);
 }
 
-async function amazingFetch(url, options = undefined) {
+let amazingFetch = async function(url, options = undefined) {
     let superUrl = `https://notes-get-req.herokuapp.com/fetch?url=${url}`;
     if (options) {
         superUrl += `&options=${JSON.stringify(options)}`;
@@ -94,6 +94,6 @@ async function getShowlink(keyword) {
 
 
 console.log("added async functions: trySuperFetch, superFetch, checkLink (that returns a document - rn doesnt work), and RandomArticleName() and downloadTEXT downloadJSON too and also amazingFetch() that does return an object too with the function text()")
-say("also, getShowlink() checks if available at sdarot.tv and returns null or its link")
+say("also, getShowlink() checks if available at sdarot.tv and returns null or its link except pipi")
 
 
