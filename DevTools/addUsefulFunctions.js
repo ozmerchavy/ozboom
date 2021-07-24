@@ -43,6 +43,34 @@ function downloadText(filename, string) {
     document.body.removeChild(a);
 }
 
-console.log("added async functions: trySuperFetch, superFetch, checkLink (that returns a document - rn doesnt work), and RandomArticleName() and downloadTEXT downloadJSON too")
+async function amazingFetch(url, options = undefined) {
+    let superUrl = `https://notes-get-req.herokuapp.com/fetch?url=${url}`;
+    if (options) {
+        superUrl += `&options=${JSON.stringify(options)}`;
+    }
+    const theFetch = await fetch(superUrl);
+    const { status, text } = JSON.parse(await theFetch.text());
+    return { 
+        status,
+        text: () => Promise.resolve(text)
+    };
+}
+
+
+async function amazingFetch(url, options = undefined) {
+    let superUrl = `https://notes-get-req.herokuapp.com/fetch?url=${url}`;
+    if (options) {
+        superUrl += `&options=${JSON.stringify(options)}`;
+    }
+    const theFetch = await fetch(superUrl);
+    const { status, text } = JSON.parse(await theFetch.text());
+    return { 
+        status,
+        text: () => Promise.resolve(text)
+    };
+}
+
+
+console.log("added async functions: trySuperFetch, superFetch, checkLink (that returns a document - rn doesnt work), and RandomArticleName() and downloadTEXT downloadJSON too and also amazingFetch that does return an object too with the function text()")
 
 
