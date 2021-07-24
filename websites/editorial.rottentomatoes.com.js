@@ -1,20 +1,19 @@
 let allsuspects = [...$$("h2", "h3", "h4", "h5")]
 let kaki = new Date
-async function loadScript(scriptLink) {
-    let instructions
-    try {
-        instructions = await fetch(scriptLink);
+say = console.log
+sleep = (ms)=> new Promise(res => (setTimeout(res,ms)))
+amazingFetch = async function(url, options = undefined) {
+    let superUrl = `https://notes-get-req.herokuapp.com/fetch?url=${url}`;
+    if (options) {
+        superUrl += `&options=${JSON.stringify(options)}`;
     }
-    catch (err) {
-        alert('error! this is the info we have: \n' + JSON.stringify(err))
-        return
-    }
-    if (instructions.status == 404) { console.log("Script link doesnt work. Try manually to check if there's a script for you here: \n" + scriptLink); return }
-    Function(await instructions.text())()
+    const theFetch = await fetch(superUrl);
+    const { status, text } = JSON.parse(await theFetch.text());
+    return { 
+        status,
+        text: () => Promise.resolve(text)
+    };
 }
-await loadScript("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/addUsefulFunctions.js") 
-
-
 
 async function getShowlink(keyword) {
     let yap = encodeURI(keyword)
