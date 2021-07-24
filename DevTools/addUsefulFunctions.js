@@ -44,7 +44,7 @@ function downloadText(filename, string) {
     document.body.removeChild(a);
 }
 
-let amazingFetch = async function(url, options = undefined) {
+amazingFetch = async function(url, options = undefined) {
     let superUrl = `https://notes-get-req.herokuapp.com/fetch?url=${url}`;
     if (options) {
         superUrl += `&options=${JSON.stringify(options)}`;
@@ -57,19 +57,6 @@ let amazingFetch = async function(url, options = undefined) {
     };
 }
 
-
-async function amazingFetch(url, options = undefined) {
-    let superUrl = `https://notes-get-req.herokuapp.com/fetch?url=${url}`;
-    if (options) {
-        superUrl += `&options=${JSON.stringify(options)}`;
-    }
-    const theFetch = await fetch(superUrl);
-    const { status, text } = JSON.parse(await theFetch.text());
-    return { 
-        status,
-        text: () => Promise.resolve(text)
-    };
-}
 
 async function getShowlink(keyword) {
     let yap = encodeURI(keyword)
