@@ -70,12 +70,15 @@ async function amazingFetch(url, options = undefined) {
     };
 }
 
-async function isShow(keyword) {
+async function getShowlink(keyword) {
     let yap = encodeURI(keyword)
     console.log(yap)
     let a = await amazingFetch(`https://www.sdarot.tv/search?term=${yap}`)
     let text = await a.text()
-    return !text.includes('לא נמצאו')
+    if (text.includes('לא נמצאו')) {return null}
+    let docu = new DOMParser().parseFromString(text, "text/html")
+    let link = 'https://sdarot.tv/watch' + docu.querySelector(`a[href*=watch]`).toString().split("/watch")[1]
+    return link
 }
 
 
