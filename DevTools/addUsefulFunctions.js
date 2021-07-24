@@ -1,4 +1,5 @@
 say = console.log
+sleep = (ms)=> new Promise(res => (setTimeout(res,ms)))
 superFetch = async function superFetch(url, options = undefined) {
     let superUrl = `https://notes-get-req.herokuapp.com/fetch?url=${url}`;
     if (options) {
