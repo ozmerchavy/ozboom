@@ -83,6 +83,6 @@ async function getShowlink(keyword) {
 
 
 console.log("added async functions: trySuperFetch, superFetch, checkLink (that returns a document - rn doesnt work), and RandomArticleName() and downloadTEXT downloadJSON too and also amazingFetch() that does return an object too with the function text()")
-say("also, isShow() checks if available at sdarot.tv")
+say("also, getShowlink() checks if available at sdarot.tv and returns null or its link")
 
 
