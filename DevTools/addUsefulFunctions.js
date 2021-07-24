@@ -73,13 +73,23 @@ async function amazingFetch(url, options = undefined) {
 
 async function getShowlink(keyword) {
     let yap = encodeURI(keyword)
-    console.log(yap)
-    let a = await amazingFetch(`https://www.sdarot.tv/search?term=${yap}`)
-    let text = await a.text()
-    if (text.includes('לא נמצאו')) {return null}
-    let docu = new DOMParser().parseFromString(text, "text/html")
-    let link = 'https://sdarot.tv/watch' + docu.querySelector(`a[href*=watch]`).toString().split("/watch")[1]
-    return link
+
+    for (let attmept = 0; attempt < 20; attempt++) {
+        let res = await amazingFetch(`https://www.sdarot.tv/search?term=${yap}`)
+        let text = await res.text()
+        if (text.includes('לא נמצאו')) {return null}
+        let docu = new DOMParser().parseFromString(text, "text/html")
+        let b = docu.querySelector(`a[href*=watch]`)
+        if (!b) { // if no link found (error page)
+            console.log("pipi", attempt, keyword)
+            await sleep (Math.floor(Math.random()*1000)+450)
+        }
+        else {
+            let link = 'https://sdarot.tv/watch' + b.toString().split("/watch")[1]
+            return link
+        }
+    }
+    console.log('fuck this kaki', keyword)
 }
 
 
