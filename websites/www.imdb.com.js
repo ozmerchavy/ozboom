@@ -36,6 +36,8 @@ async function getShowlink(keyword) {
 
 
 
+
+(async () =>{
 while (allsuspects.length > 0) {
     const h = allsuspects.shift()
     let name = h.innerText.match(/[\w ]+/g)?.[0];
@@ -57,4 +59,4 @@ while (allsuspects.length > 0) {
         if (new Date - kaki > 1000 * 60 * 2) { say("I need to do pipi"); break }
     }
 
-}
+}})()
