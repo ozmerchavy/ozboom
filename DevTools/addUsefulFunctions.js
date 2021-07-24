@@ -58,29 +58,6 @@ amazingFetch = async function(url, options = undefined) {
 }
 
 
-async function getShowlink(keyword) {
-    let yap = encodeURI(keyword)
-
-    for (let attempt = 0; attempt < 20; attempt++) {
-        let res = await amazingFetch(`https://www.sdarot.tv/search?term=${yap}`)
-        let text = await res.text()
-        if (text.includes('לא נמצאו')) {return null}
-        let docu = new DOMParser().parseFromString(text, "text/html")
-        let b = docu.querySelector(`a[href*=watch]`)
-        if (!b) { // if no link found (error page)
-            console.log("pipi", attempt, keyword)
-            await sleep (Math.floor(Math.random()*1000)+450)
-        }
-        else {
-            let link = 'https://sdarot.tv/watch' + b.toString().split("/watch")[1]
-            return link
-        }
-    }
-    console.log('fuck this kaki', keyword)
-}
-
-
 console.log("added async functions: trySuperFetch, superFetch, checkLink (that returns a document - rn doesnt work), and RandomArticleName() and downloadTEXT downloadJSON too and also amazingFetch() that does return an object too with the function text()")
-say("also, getShowlink() checks if available at sdarot.tv and returns null or its link except pipi")
 
 
