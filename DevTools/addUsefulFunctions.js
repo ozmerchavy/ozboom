@@ -74,7 +74,7 @@ async function amazingFetch(url, options = undefined) {
 async function getShowlink(keyword) {
     let yap = encodeURI(keyword)
 
-    for (let attmept = 0; attempt < 20; attempt++) {
+    for (let attempt = 0; attempt < 20; attempt++) {
         let res = await amazingFetch(`https://www.sdarot.tv/search?term=${yap}`)
         let text = await res.text()
         if (text.includes('לא נמצאו')) {return null}
