@@ -1,15 +1,15 @@
-let allsuspects = [...$$("h2", "h3", "h4", "h5")]
+let allsuspects = [...document.querySelectorAll("h2", "h3", "h4", "h5")]
 let kaki = new Date
 say = console.log
-sleep = (ms)=> new Promise(res => (setTimeout(res,ms)))
-amazingFetch = async function(url, options = undefined) {
+sleep = (ms) => new Promise(res => (setTimeout(res, ms)))
+amazingFetch = async function (url, options = undefined) {
     let superUrl = `https://notes-get-req.herokuapp.com/fetch?url=${url}`;
     if (options) {
         superUrl += `&options=${JSON.stringify(options)}`;
     }
     const theFetch = await fetch(superUrl);
     const { status, text } = JSON.parse(await theFetch.text());
-    return { 
+    return {
         status,
         text: () => Promise.resolve(text)
     };
@@ -35,12 +35,10 @@ async function getShowlink(keyword) {
 
 
 
-
-
 (async () =>{
 while (allsuspects.length > 0) {
     const h = allsuspects.shift()
-    let name = h.innerText.match(/[\w ]+/g)?.[0];
+    let name = h.innerText.match(/[a-zA-Z ]+/g)?.[0];
     if (name) {
 
         let link = await getShowlink(name)
