@@ -1,4 +1,4 @@
-let allsuspects = [...document.querySelectorAll("h2", "h3", "h4", "h5")]
+let allsuspects = [...document.querySelectorAll("h2", "h3", "h4", "h5", "a", "td", "th" )]
 let kaki = new Date
 say = console.log
 sleep = (ms) => new Promise(res => (setTimeout(res, ms)))
