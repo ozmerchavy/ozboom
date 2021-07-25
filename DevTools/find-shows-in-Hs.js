@@ -85,6 +85,8 @@ async function findEnglish() {
                     h.style.cursor = "pointer"
                     h.style.textDecoration = 'underline'
                     h.onclick = function () { open(link) }
+                    allsuspects.push(h)
+
                 }
                 else {
                     allsuspects.push(h)
