@@ -33,28 +33,68 @@ async function getShowlink(keyword) {
     }
 }
 
+async function getEnglishlink(keyword) {
+    let yap = encodeURI(keyword)
 
+    let res = await amazingFetch(`https://primewire.pics/search/${yap}`)
+    let text = await res.text()
+    if (text.includes('no results')) { return null }
+    let link = `https://primewire.pics/search/${yap}`
+    return link
 
-(async () =>{
-while (allsuspects.length > 0) {
-    const h = allsuspects.shift()
-    let name = h.innerText.match(/[a-zA-Z ]+/g)?.[0];
-    if (name) {
+}
 
-        let link = await getShowlink(name)
-        if (link) {
-            say('got the link', link)
-            h.querySelectorAll("*").forEach(thing => thing.href = "#")
-            h.style.border = "3px solid yellow"
-            h.style.cursor = "pointer"
-            h.style.textDecoration = 'underline'
-            h.onclick = function () { open(link) }
+async function findHebrew() {
+    while (allsuspects.length > 0) {
+        const h = allsuspects.shift()
+        let name = h.innerText.match(/[a-zA-Z ]+/g)?.[0];
+        if (name) {
+
+            let link = await getShowlink(name)
+            if (link) {
+                say('got the link', link)
+                h.querySelectorAll("*").forEach(thing => thing.href = "#")
+                h.style.border = "3px solid yellow"
+                h.style.cursor = "pointer"
+                h.style.textDecoration = 'underline'
+                h.onclick = function () { open(link) }
+            }
+            else {
+                allsuspects.push(h)
+            }
+            await sleep(Math.floor(Math.random() * 250 + 400))
+            if (new Date - kaki > 1000 * 60 * 2) { say("I need to do pipi"); break }
         }
-        else {
-            allsuspects.push(h)
-        }
-        await sleep(Math.floor(Math.random() * 250 + 400))
-        if (new Date - kaki > 1000 * 60 * 2) { say("I need to do pipi"); break }
+
+    }
+}
+
+async function findEnglish() {
+        while (allsuspects.length > 0) {
+            const h = allsuspects.shift()
+            if (h.style.border == "3px solid yellow") { allsuspects.push(h) }
+            else{
+            let name = h.innerText.match(/[a-zA-Z ]+/g)?.[0];
+            if (name) {
+
+                let link = await getEnglishlink(name)
+                if (link) {
+                    say('got the English link', link)
+                    h.querySelectorAll("*").forEach(thing => thing.href = "#")
+                    h.style.border = "3px solid blue"
+                    h.style.cursor = "pointer"
+                    h.style.textDecoration = 'underline'
+                    h.onclick = function () { open(link) }
+                }
+                else {
+                    allsuspects.push(h)
+                }
+                await sleep(Math.floor(Math.random() * 100 + 100))
+                if (new Date - kaki > 1000 * 60 * 2) { say("I need to do pipi"); break }
+            }
+
+        }}
     }
 
-}})()
+findHebrew()
+findEnglish()
