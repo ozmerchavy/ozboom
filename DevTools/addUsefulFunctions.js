@@ -58,4 +58,4 @@ amazingFetch = async function(url, options = undefined) {
 
 
 
-console.log("added async functions: amazingFetch, superFetch (its old version), checkLink (that returns a document - rn doesnt work), and RandomArticleName() and downloadTEXT downloadJSON)
+console.log("added async functions: amazingFetch, superFetch (its old version), checkLink (that returns a document - rn doesnt work), and RandomArticleName() and downloadTEXT downloadJSON")
