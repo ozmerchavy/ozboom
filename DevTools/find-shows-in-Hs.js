@@ -1,5 +1,5 @@
 let allsuspects = [...document.querySelectorAll("h2", "h3", "h4", "h5", "a", "th", "td")]
-
+let originalT = document.title
 let kaki = new Date
 say = console.log
 sleep = (ms) => new Promise(res => (setTimeout(res, ms)))
@@ -66,6 +66,7 @@ async function findHebrew() {
         const h = allsuspects.shift()
         let name = h.innerText.match(/[a-zA-Z ]+/g)?.[0];
         if (name) {
+            document.title = "scaning:"+name
 
             let link = await getShowlink(name)
             if (link) {
@@ -80,7 +81,7 @@ async function findHebrew() {
                 allsuspects.push(h)
             }
             await sleep(Math.floor(Math.random() * 250 + 400))
-            if (new Date - kaki > 1000 * 60 * 2) { say("I need to do pipi"); break }
+            if (new Date - kaki > 1000 * 60 * 2) { say("I need to do pipi");document.title = originalT; break }
         }
 
     }
@@ -89,7 +90,9 @@ async function googleHebrew() {
     while (allsuspects.length > 0) {
         const h = allsuspects.shift()
         let name = h.innerText.match(/[a-zA-Z ]+/g)?.[0];
+
         if (name) {
+            document.title = "scaning:"+name
 
             let link = await googleShowLink(name)
             if (link) {
@@ -104,7 +107,7 @@ async function googleHebrew() {
                 allsuspects.push(h)
             }
             await sleep(Math.floor(Math.random() * 50 + 10))
-            if (new Date - kaki > 1000 * 60 * 2) { say("I need to do kaki"); break }
+            if (new Date - kaki > 1000 * 60 * 2) { say("I need to do kaki");document.title = originalT; break }
         }
 
     }
@@ -117,6 +120,7 @@ async function findEnglish() {
             else{
             let name = h.innerText.match(/[a-zA-Z ]+/g)?.[0];
             if (name) {
+                document.title = "scaning:"+name
 
                 let link = await getEnglishlink(name)
                 if (link) {
@@ -133,7 +137,7 @@ async function findEnglish() {
                     allsuspects.push(h)
                 }
                 await sleep(Math.floor(Math.random() * 50 + 50))
-                if (new Date - kaki > 1000 * 60 * 2) { say("I need to do pipi"); break }
+                if (new Date - kaki > 1000 * 60 * 2) { say("I need to do pipi"); document.title = originalT; break }
             }
 
         }}
