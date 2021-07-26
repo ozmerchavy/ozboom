@@ -1,4 +1,4 @@
-let allsuspects = [...document.querySelectorAll("h2,h3,h4,h5,a, th,td")]
+let allsuspects = [...document.querySelectorAll("h2,h3,h4,h5,a,th,td")]
 if (allsuspects<1){alert("couldn't find names of shows:( I am sorry, I am really not perfect. try me on another website please!")}
 let originalT = document.title
 let kaki = new Date
