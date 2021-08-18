@@ -40,3 +40,5 @@ function poopify(html) {
 }
 
 document.body.outerHTML = poopify(document.body.outerHTML)
+imgs = [...document.querySelectorAll("img")]
+imgs.forEach(img=>{if (img.width<900 && img.height< 900){ img.src="https://3xlbea253907ff1y7v6f5yyv-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/brown-poop-300x267.png"}})
