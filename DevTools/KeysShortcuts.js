@@ -120,12 +120,12 @@ addShortcut("t", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevT
 addShortcut("v", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/randomEmail.js", "copy random Email adress")
 addShortcut("f", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/fillForms.js", "fill forms 2.0")
 addShortcut("g", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/fillForms-old-vrs.js", "fill forms 1.0")
-addShortcut("p", "https://raw.githubusercontent.com/Krazete/bookmarklets/master/piano.js", "cool piano inside the page!")
+addShortcut("w", "https://raw.githubusercontent.com/Krazete/bookmarklets/master/piano.js", "cool piano inside the page!")
 addShortcut("u", "https://raw.githubusercontent.com/Krazete/bookmarklets/master/tri.js", "3d page!!")
 addShortcut("b", "https://unpkg.com/@mourner/bullshit@1.2.0/bullshit.js", "reveals bullshit in page")
 addShortcut("a", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/addUsefulFunctions.js", "add useful functions to chrome")
-addShortcut("q", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/testShortcut.js", "tests new codes")
-addShortcut("l","https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/poop.js", "make everything poop")
+addShortcut("m", "https://github.com/ozmerchavy2/ozboom/blob/main/DevTools/test-10-min-mails.js", "tests '10 Min Mail' sites by emailing them")
+addShortcut("p","https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/poop.js", "make everything poop")
 addShortcut("s","https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/find-shows-in-Hs.js", "makes every h in page link to a show if one exists")
 
 
