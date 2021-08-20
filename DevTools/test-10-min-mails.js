@@ -11,16 +11,20 @@ amazingFetch = async function (url, options = undefined) {
     };
 }
 
+let email = 0
 if ([...document.querySelectorAll("input")].filter(x => x.outerHTML.includes("mail")).length>0) {
-    let email = [...document.querySelectorAll("input")].filter(x => x.outerHTML.includes("mail"))[0].value
+     email = [...document.querySelectorAll("input")].filter(x => x.outerHTML.includes("mail"))[0].value
+    if (!email.includes("@")){
+         email = prompt("What is the address? I cant find it in the page")
+    }
 
 }
 else {
-    let email = prompt("What is the address? I cant find it in the page")
+     email = prompt("What is the address? I cant find it in the page")
 }
 console.log(email + " is being tested")
-async () => {
-    await amazingFetch("https://www.geoguessr.com/api/v3/accounts/signup", {
+async function go() {
+    return await amazingFetch("https://www.geoguessr.com/api/v3/accounts/signup", {
         "headers": {
             "accept": "*/*",
             "accept-language": "he,en;q=0.9",
@@ -40,4 +44,6 @@ async () => {
         "method": "POST",
         "mode": "cors"
     });
+
 }
+go()
