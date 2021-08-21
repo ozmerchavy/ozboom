@@ -56,6 +56,11 @@ amazingFetch = async function(url, options = undefined) {
     };
 }
 
+getVariables = function getVariables(){
+    return Object.keys(window).filter(function(x)
+{
+    return window[x] instanceof Function && !/\[native code\]/.test(window[x].toString());
+});}
 
 
 console.log("added async functions: amazingFetch, superFetch (its old version), checkLink (that returns a document - rn doesnt work), and RandomArticleName() and downloadTEXT downloadJSON")
