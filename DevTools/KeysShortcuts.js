@@ -124,7 +124,7 @@ addShortcut("w", "https://raw.githubusercontent.com/Krazete/bookmarklets/master/
 addShortcut("u", "https://raw.githubusercontent.com/Krazete/bookmarklets/master/tri.js", "3d page!!")
 addShortcut("b", "https://unpkg.com/@mourner/bullshit@1.2.0/bullshit.js", "reveals bullshit in page")
 addShortcut("a", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/addUsefulFunctions.js", "add useful functions to chrome")
-addShortcut("m", "https://github.com/ozmerchavy2/ozboom/blob/main/DevTools/test-10-min-mails.js", "tests '10 Min Mail' sites by emailing them")
+addShortcut("c", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/deleteCookies.js", "Clears all the cookies")
 addShortcut("p","https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/poop.js", "make everything poop")
 addShortcut("s","https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/find-shows-in-Hs.js", "makes every h in page link to a show if one exists")
 
