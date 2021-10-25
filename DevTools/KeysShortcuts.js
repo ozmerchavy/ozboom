@@ -127,7 +127,7 @@ addShortcut("a", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevT
 addShortcut("c", "https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/deleteCookies.js", "Clears all the cookies")
 addShortcut("p","https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/poop.js", "make everything poop")
 addShortcut("s","https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/find-shows-in-Hs.js", "makes every h in page link to a show if one exists")
-addShortcut("g","https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/getVariables.js", "Gets all non- native functions in the document")
+addShortcut("g","https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/DevTools/getVariables.js", "Gets all non- native variables in the document")
 
 
 
