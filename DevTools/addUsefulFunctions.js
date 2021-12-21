@@ -63,4 +63,20 @@ getVariables = function getVariables(){
 });}
 
 
-console.log("added async functions: amazingFetch, superFetch (its old version), checkLink (that returns a document - rn doesnt work), and RandomArticleName() and downloadTEXT downloadJSON")
+allScripts = await Promise.all([...document.scripts].map(async (x, idx) => {
+        if (x.src) {
+            let obj = {}; 
+            obj.source = x.src;
+            try {obj.code = await fetch(x.src).then(x => x.text(), (err)=>{x.src})}
+            catch {obj.code = ""}
+        return obj
+        }
+        else { return ({ "source": "document", "code": x.innerText }) }
+    }))
+
+findInScripts = async function(query){
+    return allScripts.filter(x =>{ try {return x.code.includes(query)} catch{return false}})
+}
+
+
+console.log("added async functions: amazingFetch, superFetch (its old version), checkLink (that returns a document - rn doesnt work), findInScripts, and RandomArticleName() and downloadTEXT downloadJSON")
