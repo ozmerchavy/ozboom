@@ -63,7 +63,7 @@ getVariables = function getVariables(){
 });}
 
 
-allScripts = await Promise.all([...document.scripts].map(async (x, idx) => {
+allScripts = Promise.all([...document.scripts].map(async (x, idx) => {
         if (x.src) {
             let obj = {}; 
             obj.source = x.src;
@@ -75,7 +75,8 @@ allScripts = await Promise.all([...document.scripts].map(async (x, idx) => {
     }))
 
 findInScripts = async function(query){
-    return allScripts.filter(x =>{ try {return x.code.includes(query)} catch{return false}})
+    let newScripts = await allScripts; 
+    return newScripts.filter(x =>{ try {return x.code.includes(query)} catch{return false}})
 }
 
 
