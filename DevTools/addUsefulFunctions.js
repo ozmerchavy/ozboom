@@ -77,7 +77,28 @@ allScripts = Promise.all([...document.scripts].map(async (x, idx) => {
 findInScripts = async function(query){
     let newScripts = await allScripts; 
     return newScripts.filter(x =>{ try {return x.code.includes(query)} catch{return false}})
+    
+}
+
+// for example, const stolen = stealer(Array, "push"). "stolen" will hold any array that pushed
+
+stealer = function stealer(proto, funcName) {
+
+    const realFunc = proto.prototype[funcName];
+
+    const stolenThingsSet = new Set();
+    const stolenThingsDict = {};
+
+    proto.prototype[funcName] = function (...args) {
+        if (!stolenThingsSet.has(this)) {
+            stolenThingsSet.add(this);
+            stolenThingsDict[stolenThingsSet.size] = this;
+        }
+        realFunc.call(this, ...args);
+    }
+
+    return stolenThingsDict;
 }
 
 
-console.log("added async functions: amazingFetch, superFetch (its old version), checkLink (that returns a document - rn doesnt work), findInScripts, and RandomArticleName() and downloadTEXT downloadJSON")
+console.log("added async functions: amazingFetch, superFetch (its old version), checkLink (that returns a document - rn doesnt work), findInScripts, and RandomArticleName() and downloadTEXT downloadJSON and stealer that can override proto functions in order to steal objects (without chenging functionality)")
