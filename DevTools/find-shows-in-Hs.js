@@ -53,14 +53,20 @@ async function googleShowLink(keyword) {
     }
 }
 
-async function getEnglishlink(keyword) {
-    let yap = encodeURI(keyword)
-
-    let res = await amazingFetch(`https://primewire.pics/search/${yap}`)
+async function searchGoogleforSrati (keyword) {
+    let yap = encodeURI(keyword+"+sratim.tv/")
+    let results = []
+    let res = await amazingFetch(`https://www.google.com/search?as_q=${yap}`)
     let text = await res.text()
-    if (text.includes('no results')) { return null }
-    let link = `https://primewire.pics/search/${yap}`
-    return link
+    let docu = new DOMParser().parseFromString(text, "text/html")
+    docu.querySelectorAll("a").forEach(a=>{ if ( a.outerHTML.includes("https://www.sratim.tv/movie/")){results.push(a.href)}})
+    if (results.length< 1)  {
+        console.log('google pipi bamichnas', keyword)
+        return null
+    }
+    else {
+        return 'https://sratim.tv/movie' + results[0].toString().split("/movie")[1] 
+    }
 
 }
 
@@ -125,7 +131,7 @@ async function findEnglish() {
             if (name) {
                 document.title = "scaning:"+name
 
-                let link = await getEnglishlink(name)
+                let link = await searchGoogleforSrati (name)
                 if (link) {
                     say('got the English link', link)
                     h.querySelectorAll("*").forEach(thing => thing.href = "#")
