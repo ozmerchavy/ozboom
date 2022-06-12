@@ -208,7 +208,10 @@ answers = countries.map(x => {
     if (!x.includes(`{`)) {
         return x
     } else {
-        return x.split("{")[1].split("}")[0]
+        let p = x.split("{")[1].split("}")[0];
+        alert(p)
+        return p
+     
     }
 })
 let i = 0
