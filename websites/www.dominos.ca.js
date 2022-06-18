@@ -214,6 +214,10 @@ const css = `
 }
 
 @media(hover: none) {
+  .tooltip * {
+    font-family: system-ui;
+  }
+  
   .appendix:focus {
       background-color: transparent;
       color: transparent;
