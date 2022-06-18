@@ -214,8 +214,8 @@ const css = `
 }
 
 @media(hover: none) {
-  .tooltip * {
-    font-family: system-ui;
+  .appendix {
+      font-family: system-ui;
   }
   
   .appendix:focus {
