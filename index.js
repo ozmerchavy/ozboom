@@ -1,3 +1,43 @@
+import fetch from 'node-fetch';
+
+async function getJson(url) {
+  const res = await fetch(url);
+  return await res.json();
+}
+
+async function getFilesInRepo() {
+  const a = await getJson('https://api.github.com/repos/ozmerchavy2/ozboom/commits');
+  const b = a[0].sha;
+
+  const c = await getJson(
+    `https://api.github.com/repos/ozmerchavy2/ozboom/git/commits/${b}`
+  );
+  const d = c.tree.sha;
+
+  const e = await getJson(
+    `https://api.github.com/repos/ozmerchavy2/ozboom/git/trees/${d}?recursive=1`
+  );
+
+  return e.tree.map(({ path }) => path);
+}
+
+async function getRelevantCode(hostname) {
+  const f = await getFilesInRepo();
+
+  const g = f
+    .filter((path) => path.startsWith('websites/'))
+    .map((path) => path.substring('websites/'.length, path.lastIndexOf('.js')));
+
+  for (const filename of g) {
+    if (hostname.includes(filename)) {
+      return `https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/websites/${filename}.js`;
+    }
+  }
+}
+
+
+
+
 async function loadScript(scriptLink) {
     let instructions
     try {
@@ -17,7 +57,7 @@ clickLastSec++//////////////////////////indicates a click
 
 async function stuffToDo() { //////////////////////////HERE IS WHAT WILL HAPPEN BASED ON CLICK AMOUNT
     if (clickLastSec == 1) {
-        await loadScript("https://raw.githubusercontent.com/ozmerchavy2/ozboom/main/websites/" + window.location.hostname + ".js") ////////activates Oz Boom
+        await loadScript(await getRelevantCode(window.location.hostname)) ////////activates Oz Boom
 
     }
     if (clickLastSec == 2) {
