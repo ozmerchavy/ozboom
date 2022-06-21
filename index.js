@@ -1,4 +1,3 @@
-import fetch from 'node-fetch';
 
 async function getJson(url) {
   const res = await fetch(url);
@@ -89,4 +88,4 @@ async function stuffToDo() { //////////////////////////HERE IS WHAT WILL HAPPEN 
     clickLastSec = 0
 }
 
-setTimeout(() => { if (clickLastSec > 0) { stuffToDo() } }, 400)
+setTimeout(() => { if (clickLastSec > 0) { stuffToDo() } }, 300)
