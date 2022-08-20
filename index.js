@@ -48,7 +48,12 @@ async function loadScript(scriptLink) {
     }
     if (instructions.status == 404) { console.log("Script link doesnt work. Try manually to check if there's a script for you here: \n" + scriptLink); return }
     Function(await instructions.text())()
-} /////////////////////////////////////////Teaches how to load a script from a link
+}
+
+
+///////////////////////// not using event listener because I wanted it to be harder for the user to get the triple and quadruple click because I thought it is funnt.
+
+
 if (!window.clickLastSec) {
     clickLastSec = 0
 }  ///////////////////creates the clickLastSec global variable 
