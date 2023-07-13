@@ -1,3 +1,5 @@
+console.log("converting from hectars to km2...")
+
 function makeTableKM2ifNecessary(table) {
   let headers = [...table.querySelectorAll("th")];
 
