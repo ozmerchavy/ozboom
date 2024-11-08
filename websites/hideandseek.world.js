@@ -1,7 +1,7 @@
 (() => {
   let p;
 
-  return () => {
+  return (() => {
     console.log("HOT AND COLD MODE");
     window.document.title = "HACKED " + document.title;
     const originalComputeDistanceBetween =
@@ -22,5 +22,5 @@
 
       return result;
     };
-  };
+  })();
 })();
