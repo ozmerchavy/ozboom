@@ -9,7 +9,7 @@
   }
 
   function getGameData() {
-    const TURN = [...document.querySelectorAll('button')].filter(b => b.className.includes('Mines_grid-item-revealed')).length
+    const TURN = [...document.querySelectorAll('button')].filter(b => b.className.includes('Mines_grid-item-revealed')).length + 1
     
     const bombElement = Array.from(document.querySelectorAll('span')).find(span =>
       span.className.includes('Mines_bomb-count')
@@ -22,9 +22,9 @@
     if (!diamondElement) throw new Error('Could not find diamond count element')
     const NUM_DIAMONDS = Number(diamondElement.innerText)
 
-    const multiplierElement = Array.from(document.querySelectorAll('div')).find(d =>
+    const multiplierElement = Array.from(document.querySelectorAll('div')).filter(d =>
       d.className.includes('Mines_multiplier-item')
-    )
+    )[1]
     if (!multiplierElement) throw new Error('Could not find multiplier element')
     const MULTIPLAYER = parseFloat(multiplierElement.innerText)
 
@@ -33,6 +33,7 @@
 
   function evaluateEV() {
     const { TURN, NUM_BOMBS, NUM_DIAMONDS, MULTIPLAYER } = getGameData()
+    console.warn(TURN, NUM_BOMBS, NUM_DIAMONDS, MULTIPLAYER)
     const EV = calculateEV(NUM_BOMBS, NUM_DIAMONDS, TURN, MULTIPLAYER)
     return EV
   }
@@ -89,7 +90,7 @@
       if (!retryInterval) {
         retryInterval = setInterval(() => {
           updateEVDisplay()
-        }, 3000) 
+        }, 5000) // Retry every 5 seconds
       }
     }
   }
